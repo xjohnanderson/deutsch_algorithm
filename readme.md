@@ -12,11 +12,40 @@ Deutsch’s algorithm determines whether a hidden Boolean function  is **constan
 * **Classical complexity**: 2 queries to the function.
 * **Quantum complexity**: 1 query to the function.
 
+---
+
+## 📊 Data Analysis Key Findings
+
+The following results were obtained from simulating the circuit with 1024 shots per oracle type using the `AerSimulator`:
+
+| Oracle Type | Function | Measurement Result | Classification |
+| --- | --- | --- | --- |
+| **Constant** |  | `0` (100%) | Constant |
+| **Constant** |  | `0` (100%) | Constant |
+| **Balanced** |  | `1` (100%) | Balanced |
+| **Balanced** |  | `1` (100%) | Balanced |
+
+### 🔍 Analysis Breakdown
+
+* **Constant Functions:** When simulated with oracles  and , the measurement result consistently indicated **'0'**. This demonstrates the algorithm correctly identifies constant functions.
+* **Balanced Functions:** For oracles  and , all 1024 shots yielded a **'1'**. This confirms the algorithm correctly identifies balanced functions.
+* **Discrimination Capability:** In all tested scenarios, the Deutsch algorithm successfully distinguished between constant and balanced functions by returning '0' for constant and '1' for balanced.
+
+---
+
+## 💡 Insights & Next Steps
+
+* **Quantum Advantage:** The simulations effectively demonstrate the core principle of the Deutsch algorithm, which uses **quantum superposition** and **interference** to determine a global property of a function in a single query.
+* **Foundational Logic:** This single-query capability highlights a fundamental quantum advantage. While simple for a 1-bit function, it lays the groundwork for more complex algorithms like **Deutsch-Jozsa** and **Grover’s Algorithm**, which offer significant speedups for larger computational problems.
+
+---
+
 ## 📂 Directory Structure
 
 ```text
 deutsch_algorithm/
 ├── src/
+│   ├── __init__.py          # Package initialization
 │   ├── oracles.py           # Logic for Constant and Balanced oracles
 │   └── deutsch_circuit.py   # The main Deutsch algorithm framework
 ├── scripts/
@@ -30,52 +59,20 @@ deutsch_algorithm/
 
 ## 🚀 Getting Started
 
-### 1. Installation
-
-Ensure you have Python 3.8+ installed. Install the necessary quantum computing libraries:
-
+1. **Installation:**
 ```bash
-pip install qiskit qiskit-aer matplotlib
+pip install qiskit qiskit-aer
 
 ```
 
-### 2. Running the Simulation
 
-To execute the Deutsch algorithm across all four oracle types (Constant 0, Constant 1, Balanced , and Balanced ), run:
-
+2. **Running the Simulation:**
 ```bash
 python scripts/run_deutsch.py
 
 ```
 
----
 
-## 🧬 How it Works
-
-The algorithm utilizes **Phase Kickback** to encode the function's property into the phase of the input qubit.
-
-1. **Initialization**: The auxiliary qubit is put into the  state using  and  gates.
-2. **Superposition**: The input qubit is put into the  state.
-3. **The Oracle ()**: The function is applied. Due to the  state on the target, the output  is "kicked back" as a phase:
-
-4. **Interference**: A final Hadamard gate is applied to the input qubit.
-* If  is **constant**, the result is .
-* If  is **balanced**, the result is .
-
-
-
----
-
-## 📊 Expected Results
-
-When running the scripts, your measurement counts should look like this:
-
-| Oracle Type | Function | Expected Measurement |
-| --- | --- | --- |
-| **Constant** |  | `{'0': 1024}` |
-| **Constant** |  | `{'0': 1024}` |
-| **Balanced** |  | `{'1': 1024}` |
-| **Balanced** |  | `{'1': 1024}` |
 
 ---
 
