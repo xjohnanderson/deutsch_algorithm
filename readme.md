@@ -40,39 +40,4 @@ The following results were obtained from simulating the circuit with 1024 shots 
 
 ---
 
-## 📂 Directory Structure
-
-```text
-deutsch_algorithm/
-├── src/
-│   ├── __init__.py          # Package initialization
-│   ├── oracles.py           # Logic for Constant and Balanced oracles
-│   └── deutsch_circuit.py   # The main Deutsch algorithm framework
-├── scripts/
-│   ├── run_deutsch.py       # Main simulation script for all cases
-│   └── run_entanglement.py  # Standalone script for Bell state testing
-└── requirements.txt         # Project dependencies
-
-```
-
----
-
-## 🚀 Getting Started
-
-1. **Installation:**
-```bash
-pip install qiskit qiskit-aer
-
-```
-
-
-2. **Running the Simulation:**
-```bash
-python scripts/run_deutsch.py
-
-```
-
-
-
----
 
